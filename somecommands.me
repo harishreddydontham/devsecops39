@@ -1,0 +1,2 @@
+cat /etc/passwd | grep -i -w harish | cut -d ":" -f1
+cat /etc/passwd | grep  -i -w harish | awk -F : '{print $1}'
