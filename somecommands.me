@@ -1,2 +1,39 @@
 cat /etc/passwd | grep -i -w harish | cut -d ":" -f1
 cat /etc/passwd | grep  -i -w harish | awk -F : '{print $1}'
+cat /etc/passwd | egrep -i -w 'rebel1|superstar' (or)  cat /etc/passwd | grep -E -i -w 'rebel1|superstar' - to search two different words using  egrep;
+cat /etc/passwd | egrep -i ^reb - grep using reqular expression
+echo $spl | fold -w1 | shuf | head -1 | tail -1
+echo 'welcom-to-devops-class' | tr -d '-'
+echo 'welcome-to-devops-class' | tr [:lower:] [:upper:]
+echo 'welcome-to-devops-class' | tr 'e' 'x'   -- replaces e with the x .
+sed  "58 s/.*PasswordAuthentication.*/PasswordAuthentication yes/g" /etc/ssh/sshd_config  |  grep -i passwordAuth -n #dryrun 
+sed -i "58 s/.*PasswordAuthentication.*/PasswordAuthentication yes/g" /etc/ssh/sshd_config  #-i changes in the file
+sed -i '/^Sub*/i #ADDING LINE BEFORE MATCH' /tmp/sshd_config
+sed -i '/^Sub*/a #ADDING LINE AFTER MATCH' /tmp/sshd_config
+ =======================================================================================================================================
+ REGULAR EXPRESSIONS 
+ .    - MEANS EVERY THING IN THE FILE.
+ \d   - every number in the file
+ \D   - non numbers in the file
+ \w - WORDS all the words in the file without spaces  and symbols
+ \W - non words with spaces and symbols
+ \s - spaces in the file
+ \S - non empty spaces in the file
+ ^, $ - start of the line and end of the line respectively
+ \b - boundary of word 
+ 
+
+------------FIND FILE SIZES USING FIND COMMAND------------
+find -size +30M -size -40M
+find / -name *.zip -size 40M - exact 40M size
+find / -name *.zip -size +40M - above 40M size
+find / -name *.zip -size -40M - below 40M size
+find / -type f -size +100M -a -size -200M -exec du -sh {} \;
+find / -type f -name "*.log" -exec grep '404' {} \;
+
+https://medium.com/@nirbhaysingh281/use-of-mtime-in-linux-ef59cb175546
+#Delete files greater than size 30MB
+find . -type f -mtime +30 -delete
+find . -mtime +30 | xargs rm
+find /home/amit/log/ -mtime +30 -exec rm {} \;
+
